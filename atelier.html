@@ -2,8 +2,14 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Atelier — ALTESSE</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <title>Atelier — ALTESSE | Explore Our Haute Couture Gowns</title>
+  <meta name="description" content="Browse ALTESSE's handcrafted haute couture gowns. Each piece is a unique creation from our Parisian atelier. Zoom into details, discover craftsmanship.">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="ALTESSE Atelier — Handcrafted Couture Gowns">
+  <meta property="og:description" content="Each gown: 180-350 hours of handwork. Silk, embroidery, drape. Paris.">
+  <meta property="og:image" content="https://altesse-two.vercel.app/images/hero-2.jpg">
+  <meta property="og:url" content="https://altesse-two.vercel.app/atelier.html">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -79,6 +85,10 @@
         <p class="atelier-info-collection">${w.collection}</p>
         <div class="atelier-info-section"><h4>Inspiration</h4><p>${insp}</p></div>
         <div class="atelier-info-section"><h4>Craft</h4><p>${cft}</p></div>
+        <div class="atelier-share">
+          <a href="https://pinterest.com/pin/create/button/?url=${encodeURIComponent('https://altesse-two.vercel.app/atelier.html?id='+w.id)}&media=${encodeURIComponent(w.images[0])}&description=${encodeURIComponent(name+' — ALTESSE Haute Couture Paris')}" target="_blank" rel="noopener" class="btn-share-pinterest">📌 Save to Pinterest</a>
+          <a href="https://twitter.com/intent/tweet?text=${encodeURIComponent(name+' — ALTESSE Haute Couture Paris')}&url=${encodeURIComponent('https://altesse-two.vercel.app/atelier.html?id='+w.id)}" target="_blank" rel="noopener" class="btn-share-twitter">𝕏 Share</a>
+        </div>
         <a href="contact.html" class="btn-accent">Request a Consultation</a></div></div>`;
       document.title = name + ' — ALTESSE';
     } catch(e) { $('#atelierContent').innerHTML = '<p style="padding:100px;text-align:center;color:var(--text-dim)">Unable to load.</p>'; }
