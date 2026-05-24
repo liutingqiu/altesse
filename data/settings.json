@@ -1,0 +1,31 @@
+{
+  "siteName": "ALTESSE",
+  "siteTagline": "Haute Couture",
+  "siteTaglineZh": "高级定制",
+  "email": "atelier@altesse-couture.com",
+  "whatsapp": "+33 6 XX XX XX XX",
+  "instagram": "altesse.couture",
+  "address": "31 Rue Cambon, 75001 Paris, France",
+  "seo": {
+    "title": "ALTESSE — Haute Couture | Paris",
+    "description": "ALTESSE Paris — Maison de Haute Couture. Discover our collections of handcrafted couture gowns, where each piece is a singular work of art.",
+    "keywords": "haute couture, couture gowns, Paris fashion, luxury dresses, bespoke gowns, ALTESSE"
+  },
+  "announcement": {
+    "active": true,
+    "text": "By Appointment Only — Private Consultations at 31 Rue Cambon, Paris",
+    "textZh": "仅限预约 — 巴黎康朋街31号私人咨询",
+    "textEs": "Solo con Cita Previa — Consultas Privadas en 31 Rue Cambon, París",
+    "textFr": "Sur Rendez-vous Uniquement — Consultations Privées au 31 Rue Cambon, Paris",
+    "textRu": "Только по записи — Частные консультации, 31 Rue Cambon, Париж",
+    "textAr": "بالموعد فقط — استشارات خاصة في 31 شارع كامبون، باريس",
+    "textJa": "完全予約制 — 31 Rue Cambon, Paris にてプライベートコンサルテーション",
+    "textKo": "예약제 전용 — 31 Rue Cambon, Paris 프라이빗 상담",
+    "textDe": "Nur nach Vereinbarung — Private Beratungen in der 31 Rue Cambon, Paris",
+    "textPt": "Apenas com Hora Marcada — Consultas Privadas no 31 Rue Cambon, Paris",
+    "textHi": "केवल नियुक्ति द्वारा — 31 Rue Cambon, Paris में निजी परामर्श",
+    "textId": "Hanya dengan Janji Temu — Konsultasi Pribadi di 31 Rue Cambon, Paris",
+    "textTr": "Sadece Randevu ile — 31 Rue Cambon, Paris'te Özel Danışmanlık",
+    "textIt": "Solo su Appuntamento — Consulenze Private al 31 Rue Cambon, Parigi"
+  }
+}

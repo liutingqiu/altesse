@@ -1,0 +1,4 @@
+node_modules
+.git
+CLAUDE.md
+*.log

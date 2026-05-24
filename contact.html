@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rendez-vous — ALTESSE</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<nav class="nav"><div class="nav-inner">
+  <a href="/" class="nav-logo">ALTESSE</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="/">Maison</a></li><li><a href="collections.html">Collections</a></li>
+    <li><a href="about.html">L'Histoire</a></li><li><a href="contact.html" class="active">Rendez-vous</a></li>
+  </ul>
+  <div class="nav-actions">
+    <select class="lang-switcher" id="langSwitcher" aria-label="Language">
+      <option value="en">EN</option><option value="zh">中文</option><option value="es">ES</option>
+      <option value="fr">FR</option><option value="ru">RU</option><option value="ar">AR</option>
+      <option value="ja">JA</option><option value="ko">KO</option><option value="de">DE</option>
+      <option value="pt">PT</option><option value="hi">HI</option><option value="id">ID</option><option value="tr">TR</option><option value="it">IT</option>
+    </select>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</div></nav>
+
+<section class="page-header"><h1 data-i18n="contact_title">Rendez-vous</h1><p data-i18n="contact_sub">Every ALTESSE gown begins with a conversation.</p></section>
+
+<div class="contact-layout reveal">
+  <div class="contact-form-wrap">
+    <h2 data-i18n="contact_title">Rendez-vous</h2>
+    <form id="contactForm">
+      <div class="form-group"><label data-i18n="contact_name">Name</label><input type="text" id="cf_name" required></div>
+      <div class="form-group"><label data-i18n="contact_email">Email</label><input type="email" id="cf_email" required></div>
+      <div class="form-group"><label data-i18n="contact_phone">Phone</label><input type="tel" id="cf_phone"></div>
+      <div class="form-group"><label data-i18n="contact_subject">Subject</label>
+        <select id="cf_subject"><option>Private Consultation</option><option>Wedding Gown</option><option>Event Dressing</option><option>Press Inquiry</option></select>
+      </div>
+      <div class="form-group"><label data-i18n="contact_message">Your Message</label><textarea id="cf_message" rows="5" required></textarea></div>
+      <button type="submit" class="btn-accent" data-i18n="contact_send">Send Inquiry</button>
+    </form>
+    <div class="form-success" id="formSuccess">
+      <p style="font-family:var(--font-display);font-size:1.5rem;font-style:italic;margin-bottom:16px;">Merci.</p>
+      <p data-i18n="contact_success">Thank you for your inquiry. Our atelier director will be in touch within 48 hours.</p>
+    </div>
+  </div>
+  <div class="contact-info-side">
+    <div class="contact-info-item"><h4>Adresse</h4><p>31 Rue Cambon<br>75001 Paris, France</p></div>
+    <div class="contact-info-item"><h4>Email</h4><p>atelier@altesse-couture.com</p></div>
+    <div class="contact-info-item"><h4>Telephone</h4><p>+33 1 XX XX XX XX</p></div>
+    <div class="contact-info-item"><h4>Heures</h4><p>Sur rendez-vous uniquement<br>Mardi – Samedi, 10:00 – 18:00</p></div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-bottom">
+    <p>&copy; 2026 ALTESSE. Tous droits reserves.</p>
+    <p class="footer-disclaimer">All images on this site are AI-generated for conceptual reference only. No copyright infringement intended. · 本站所有图片均由AI生成，仅作概念参考，无意侵犯任何版权。</p>
+  </div>
+</footer>
+<script src="js/main.js"></script>
+</body>
+</html>

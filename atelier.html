@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Atelier — ALTESSE</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<nav class="nav"><div class="nav-inner">
+  <a href="/" class="nav-logo">ALTESSE</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="/">Maison</a></li><li><a href="collections.html">Collections</a></li>
+    <li><a href="about.html">L'Histoire</a></li><li><a href="contact.html">Rendez-vous</a></li>
+  </ul>
+  <div class="nav-actions">
+    <select class="lang-switcher" id="langSwitcher" aria-label="Language">
+      <option value="en">EN</option><option value="zh">中文</option><option value="es">ES</option>
+      <option value="fr">FR</option><option value="ru">RU</option><option value="ar">AR</option><option value="ja">JA</option><option value="ko">KO</option><option value="de">DE</option><option value="pt">PT</option><option value="hi">HI</option><option value="id">ID</option><option value="tr">TR</option><option value="it">IT</option>
+    </select>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</div></nav>
+
+<div class="atelier-detail" id="atelierContent">
+  <div style="text-align:center;padding:100px 0;color:var(--text-dim)">Loading...</div>
+</div>
+
+<footer class="footer">
+  <div class="footer-bottom">
+    <p>&copy; 2026 ALTESSE. Tous droits reserves.</p>
+    <p class="footer-disclaimer">All images on this site are AI-generated for conceptual reference only. No copyright infringement intended. · 本站所有图片均由AI生成，仅作概念参考，无意侵犯任何版权。</p>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script>
+(() => {
+  const $ = s => document.querySelector(s);
+  const params = new URLSearchParams(window.location.search);
+  const workId = params.get('id');
+  const lang = () => localStorage.getItem('altesse_lang') || 'en';
+  function escAttr(s){ return String(s||'').replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/'/g,'&#39;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+  async function load() {
+    try {
+      let works = await fetch('/api/works').then(r=>r.json());
+      if (!workId) {
+        const l = lang();
+        $('#atelierContent').innerHTML = works.map(w => {
+          const name = l==='zh' && w.nameZh ? w.nameZh : w.name;
+          return `<a href="atelier.html?id=${w.id}" class="work-item" style="aspect-ratio:3/4">
+            <img src="${escAttr(w.images[0])}" alt="${escAttr(name)}" loading="lazy">
+            <div class="work-item-info"><h3>${name}</h3></div></a>`;
+        }).join('');
+        return;
+      }
+      // 支持作品 id (w001) 或系列 id (c001)
+      if (workId.startsWith('c')) {
+        works = works.filter(w => w.collection === workId);
+        if (!works.length) { $('#atelierContent').innerHTML = '<p style="padding:100px;text-align:center;color:var(--text-dim)">No works in this collection yet.</p>'; return; }
+        const l = lang();
+        $('#atelierContent').innerHTML = works.map(w => {
+          const name = l==='zh' && w.nameZh ? w.nameZh : w.name;
+          return `<a href="atelier.html?id=${w.id}" class="work-item" style="aspect-ratio:3/4">
+            <img src="${escAttr(w.images[0])}" alt="${escAttr(name)}" loading="lazy">
+            <div class="work-item-info"><h3>${name}</h3></div></a>`;
+        }).join('');
+        return;
+      }
+      works = works.filter(w=>w.id===workId);
+      if (!works.length) { $('#atelierContent').innerHTML = '<p style="padding:100px;text-align:center;color:var(--text-dim)">Not found.</p>'; return; }
+      const w = works[0], l = lang();
+      const name = l==='zh' && w.nameZh ? w.nameZh : w.name;
+      const insp = l==='zh' && w.inspirationZh ? w.inspirationZh : w.inspiration;
+      const cft = l==='zh' && w.craftZh ? w.craftZh : w.craft;
+      $('#atelierContent').innerHTML = `<div class="atelier-gallery">${w.images.map(i=>`<img src="${escAttr(i)}" alt="${escAttr(name)}" loading="lazy">`).join('')}</div>
+        <div class="atelier-info"><div><h1 class="atelier-info-name">${name}</h1>
+        <p class="atelier-info-collection">${w.collection}</p>
+        <div class="atelier-info-section"><h4>Inspiration</h4><p>${insp}</p></div>
+        <div class="atelier-info-section"><h4>Craft</h4><p>${cft}</p></div>
+        <a href="contact.html" class="btn-accent">Request a Consultation</a></div></div>`;
+      document.title = name + ' — ALTESSE';
+    } catch(e) { $('#atelierContent').innerHTML = '<p style="padding:100px;text-align:center;color:var(--text-dim)">Unable to load.</p>'; }
+  }
+  document.addEventListener('DOMContentLoaded', load);
+})();
+</script>
+</body>
+</html>

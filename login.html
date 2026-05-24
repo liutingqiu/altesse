@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Atelier — ALTESSE</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="login-page">
+    <div class="login-box">
+      <h2>ALTESSE</h2>
+      <p class="subtitle">Atelier Portal</p>
+      <div class="login-error" id="loginError"></div>
+      <form id="loginForm">
+        <div class="form-group"><label>Username</label><input type="text" id="username" required autofocus></div>
+        <div class="form-group"><label>Password</label><input type="password" id="password" required></div>
+        <button type="submit" class="btn-accent" style="width:100%">Enter</button>
+      </form>
+    </div>
+  </div>
+  <!-- 语言选择弹窗 -->
+  <div class="modal-overlay" id="langModal">
+    <div class="modal" style="text-align:center">
+      <h3 style="font-size:1.8rem;margin-bottom:4px">Choose Your Language</h3>
+      <p style="font-size:14px;color:var(--text-dim);margin-bottom:8px">选择您的母语 · Choisissez votre langue</p>
+      <p style="font-size:12px;color:var(--text-muted);margin-bottom:24px">You can change this later in Settings.</p>
+      <select id="langSelect" style="width:100%;padding:14px;background:var(--bg);border:1px solid var(--border);color:var(--text);font-size:18px;margin-bottom:24px">
+        <option value="en">English</option><option value="zh">中文</option><option value="es">Español</option>
+        <option value="fr">Français</option><option value="ru">Русский</option><option value="ar">العربية</option>
+        <option value="ja">日本語</option><option value="ko">한국어</option><option value="de">Deutsch</option>
+        <option value="pt">Português</option><option value="hi">हिन्दी</option><option value="id">Bahasa Indonesia</option>
+        <option value="tr">Türkçe</option><option value="it">Italiano</option>
+      </select>
+      <button class="btn-accent" id="langConfirm" style="width:100%">Continue →</button>
+    </div>
+  </div>
+  <script>
+  (() => {
+    const E = (id) => document.getElementById(id);
+    E('loginForm').addEventListener('submit', async e => {
+      e.preventDefault();
+      try {
+        const r = await fetch('/api/admin/login', {
+          method: 'POST', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ username: E('username').value, password: E('password').value })
+        });
+        const d = await r.json();
+        if (!r.ok) throw new Error(d.error || 'Login failed');
+        localStorage.setItem('altesse_admin_token', d.token);
+        localStorage.setItem('altesse_admin_role', d.role);
+        // 首次登录 → 弹窗选母语
+        if (!localStorage.getItem('altesse_lang')) {
+          document.getElementById('langModal').classList.add('open');
+          document.getElementById('langConfirm').onclick = () => {
+            localStorage.setItem('altesse_lang', document.getElementById('langSelect').value);
+            window.location.href = 'admin.html';
+          };
+        } else {
+          window.location.href = 'admin.html';
+        }
+      } catch (err) {
+        E('loginError').textContent = err.message; E('loginError').classList.add('visible');
+      }
+    });
+  })();
+  </script>
+</body>
+</html>

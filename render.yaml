@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: altesse
+    env: node
+    buildCommand: npm install
+    startCommand: node server.js
+    envVars:
+      - key: PORT
+        value: 3009
+    disk:
+      name: data
+      mountPath: /app/data
+      sizeGB: 1

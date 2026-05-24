@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ALTESSE — Haute Couture | Paris</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="announcement-bar" id="announcementBar">By Appointment Only — 31 Rue Cambon, Paris</div>
+<nav class="nav"><div class="nav-inner">
+  <a href="/" class="nav-logo">ALTESSE</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="/" class="active">Maison</a></li>
+    <li><a href="collections.html">Collections</a></li>
+    <li><a href="about.html">L'Histoire</a></li>
+    <li><a href="contact.html">Rendez-vous</a></li>
+  </ul>
+  <div class="nav-actions">
+    <select class="lang-switcher" id="langSwitcher" aria-label="Language">
+      <option value="en">EN</option><option value="zh">中文</option><option value="es">ES</option>
+      <option value="fr">FR</option><option value="ru">RU</option><option value="ar">AR</option>
+      <option value="ja">JA</option><option value="ko">KO</option><option value="de">DE</option>
+      <option value="pt">PT</option><option value="hi">HI</option><option value="id">ID</option><option value="tr">TR</option><option value="it">IT</option>
+    </select>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</div></nav>
+
+<section class="hero">
+  <div class="hero-slider" id="heroSlider">
+    <div class="hero-slide active"><img src="images/hero-1.jpg" alt="ALTESSE"></div>
+    <div class="hero-slide"><img src="images/hero-2.jpg" alt="ALTESSE"></div>
+    <div class="hero-slide"><img src="images/hero-3.jpg" alt="ALTESSE"></div>
+    <div class="hero-slide"><img src="images/hero-4.jpg" alt="ALTESSE"></div>
+  </div>
+  <button class="hero-arrow hero-arrow-left" id="heroPrev" aria-label="Previous">&#8249;</button>
+  <button class="hero-arrow hero-arrow-right" id="heroNext" aria-label="Next">&#8250;</button>
+  <div class="hero-dots" id="heroDots"><span class="active"></span><span></span><span></span><span></span></div>
+  <div class="hero-brand"><span class="hero-brand-line"></span><h1>ALTESSE</h1><p>Haute Couture</p></div>
+  <div class="hero-scroll"><span>Decouvrir</span><div class="hero-scroll-line"></div></div>
+</section>
+
+<section class="intro reveal">
+  <div class="intro-text">
+    <p class="intro-lead">Chaque robe est un poeme.<br>Chaque point, un mot.<br>Chaque silhouette, une histoire.</p>
+    <p class="intro-sub" data-i18n="intro_sub">Every gown a poem. Every stitch a word. Every silhouette a story — handcrafted in our Parisian atelier, where tradition meets transcendence.</p>
+    <div class="intro-signature">— ALTESSE, Paris</div>
+  </div>
+</section>
+
+<section class="section reveal">
+  <div class="section-label">Pieces Signature</div>
+  <div class="works-asymmetric" id="featuredWorks"></div>
+</section>
+
+<section class="craft reveal">
+  <div class="section-label">L'Art de la Main</div>
+  <div class="craft-layout">
+    <div class="craft-text">
+      <h2 data-i18n="craft_title">The Art of the Hand</h2>
+      <p data-i18n="craft_p1">In an age of machines, we choose needles. Each ALTESSE gown requires between 180 and 350 hours of handwork — embroidery, feathering, draping, beading — executed by our atelier's petites mains.</p>
+      <p data-i18n="craft_p2">No two pieces are identical. No detail is invisible. This is couture as it was meant to be: slow, deliberate, irreplaceable.</p>
+    </div>
+    <div class="craft-images">
+      <div class="craft-img-main"><img src="images/works/nuit-etoilee-01.jpg" alt="Embroidery"></div>
+      <div class="craft-img-overlay-1"><img src="images/works/rose-eternelle-02.jpg" alt="Silk detail"></div>
+      <div class="craft-img-overlay-2"><img src="images/works/blanche-colombe-detail.jpg" alt="Pearl detail"></div>
+    </div>
+  </div>
+</section>
+
+<section class="section reveal">
+  <div class="section-label">Collections</div>
+  <div class="collections-grid" id="collectionsGrid"></div>
+</section>
+
+<section class="atelier-section reveal">
+  <div class="atelier-layout">
+    <div class="atelier-image"><img src="images/atelier.jpg" alt="ALTESSE Atelier"></div>
+    <div class="atelier-text">
+      <div class="section-label">L'Atelier</div>
+      <h2 data-i18n="atelier_title">31 Rue Cambon, Paris</h2>
+      <p data-i18n="atelier_p1">Behind an unmarked door on Rue Cambon, our atelier has been creating couture since 2020. Seven artisans, one vision: to dress the woman who understands that true luxury is time.</p>
+      <p data-i18n="atelier_p2">Every client begins with a private consultation. Measurements are taken. Fabrics are presented. A toile is crafted. Only then does the gown begin its journey from bolt to body.</p>
+      <a href="contact.html" class="btn-accent" data-i18n="atelier_cta">Request a Consultation</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand"><h3>ALTESSE</h3><p>Haute Couture · Paris</p></div>
+    <div class="footer-links"><a href="collections.html">Collections</a><a href="about.html">L'Histoire</a><a href="contact.html">Rendez-vous</a></div>
+    <div class="footer-contact"><p>31 Rue Cambon, 75001 Paris</p><p>atelier@altesse-couture.com</p></div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 ALTESSE. Tous droits reserves.</p>
+    <p class="footer-disclaimer">All images on this site are AI-generated for conceptual reference only. No copyright infringement intended. · 本站所有图片均由AI生成，仅作概念参考，无意侵犯任何版权。</p>
+  </div>
+</footer>
+<script src="js/main.js"></script>
+</body>
+</html>

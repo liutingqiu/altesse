@@ -1,0 +1,22 @@
+[
+  {
+    "id": "m1779612989535",
+    "name": "刘天奇",
+    "email": "liutianqi51@outlook.com",
+    "phone": "111",
+    "subject": "Private Consultation",
+    "message": "111",
+    "read": true,
+    "createdAt": "2026-05-24T08:56:29.536Z"
+  },
+  {
+    "id": "m1779612989542",
+    "name": "刘天奇",
+    "email": "liutianqi51@outlook.com",
+    "phone": "111",
+    "subject": "Private Consultation",
+    "message": "111",
+    "read": true,
+    "createdAt": "2026-05-24T08:56:29.542Z"
+  }
+]

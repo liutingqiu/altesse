@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Atelier Admin — ALTESSE</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="admin-layout">
+    <aside class="admin-sidebar">
+      <div class="admin-sidebar-logo"><h3>ALTESSE</h3></div>
+      <button class="admin-sidebar-btn active" data-panel="panel-dashboard">Overview</button>
+      <button class="admin-sidebar-btn" data-panel="panel-works">Works</button>
+      <button class="admin-sidebar-btn" data-panel="panel-collections">Collections</button>
+      <button class="admin-sidebar-btn" data-panel="panel-messages">Messages</button>
+      <button class="admin-sidebar-btn" data-panel="panel-settings">Settings</button>
+      <div style="padding:12px 24px;margin-top:auto;border-top:1px solid var(--border)">
+        <select id="adminLangSwitcher" style="width:100%;background:var(--surface);border:1px solid var(--border);color:var(--text-dim);padding:12px 16px;font-size:22px;cursor:pointer">
+          <option value="en">EN</option><option value="zh">中文</option><option value="es">ES</option>
+          <option value="fr">FR</option><option value="ru">RU</option><option value="ar">AR</option>
+          <option value="ja">JA</option><option value="ko">KO</option><option value="de">DE</option>
+          <option value="pt">PT</option><option value="hi">HI</option><option value="id">ID</option><option value="tr">TR</option><option value="it">IT</option>
+        </select>
+      </div>
+      <button class="admin-sidebar-btn" onclick="logout()">Logout</button>
+    </aside>
+    <main class="admin-main">
+
+      <!-- Dashboard -->
+      <div class="admin-panel active" id="panel-dashboard">
+        <h2>Overview</h2>
+        <div id="statsGrid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:24px"></div>
+      </div>
+
+      <!-- Works -->
+      <div class="admin-panel" id="panel-works">
+        <div class="admin-header"><h2>Works</h2><button class="btn-accent" onclick="openWorkModal()">+ New Work</button></div>
+        <table class="admin-table"><thead><tr><th>Image</th><th>Name</th><th>Collection</th><th>Featured</th><th>Actions</th></tr></thead><tbody id="worksTbody"></tbody></table>
+      </div>
+
+      <!-- Collections -->
+      <div class="admin-panel" id="panel-collections">
+        <div class="admin-header"><h2>Collections</h2><button class="btn-accent" onclick="openCollectionModal()">+ New Collection</button></div>
+        <table class="admin-table"><thead><tr><th>Cover</th><th>Name</th><th>Active</th><th>Order</th><th>Actions</th></tr></thead><tbody id="colsTbody"></tbody></table>
+      </div>
+
+      <!-- Messages -->
+      <div class="admin-panel" id="panel-messages">
+        <div class="admin-header"><h2>Messages</h2></div>
+        <table class="admin-table"><thead><tr><th>From</th><th>Subject</th><th>Date</th><th>Status</th><th>Actions</th></tr></thead><tbody id="msgsTbody"></tbody></table>
+      </div>
+
+      <!-- Settings -->
+      <div class="admin-panel" id="panel-settings">
+        <div class="admin-header"><h2>Settings</h2></div>
+        <form id="settingsForm" style="max-width:800px">
+          <div class="form-group"><label id="lbl_siteName">Site Name</label><input type="text" id="s_siteName"></div>
+          <div class="form-group"><label id="lbl_email">Email</label><input type="email" id="s_email"></div>
+          <div class="form-group"><label id="lbl_instagram">Instagram</label><input type="text" id="s_instagram"></div>
+          <div class="form-group"><label id="lbl_address">Address</label><textarea id="s_address" rows="2"></textarea></div>
+          <div class="form-group"><label id="lbl_announce">Announcement</label><input type="text" id="s_announcement"></div>
+          <div class="form-group"><label id="lbl_announceZh">公告 (中文)</label><input type="text" id="s_announcementZh"></div>
+          <div class="form-group">
+            <label id="lbl_adminLang">Admin Language / 后台语言</label>
+            <select id="s_adminLang" style="width:100%;padding:18px 20px;background:var(--surface);border:1px solid var(--border);color:var(--text);font-size:28px">
+              <option value="en">English</option><option value="zh">中文</option><option value="es">Español</option>
+              <option value="fr">Français</option><option value="ru">Русский</option><option value="ar">العربية</option>
+              <option value="ja">日本語</option><option value="ko">한국어</option><option value="de">Deutsch</option>
+              <option value="pt">Português</option><option value="hi">हिन्दी</option><option value="id">Bahasa Indonesia</option>
+              <option value="tr">Türkçe</option><option value="it">Italiano</option>
+            </select>
+          </div>
+          <button type="submit" class="btn-accent" id="s_saveBtn">Save Settings</button>
+        </form>
+      </div>
+    </main>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal-overlay" id="modalOverlay"><div class="modal" id="modalContent"></div></div>
+  <div class="toast" id="toast"></div>
+
+  <script src="js/admin.js"></script>
+</body>
+</html>

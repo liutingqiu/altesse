@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Collections — ALTESSE</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<nav class="nav"><div class="nav-inner">
+  <a href="/" class="nav-logo">ALTESSE</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="/">Maison</a></li><li><a href="collections.html" class="active">Collections</a></li>
+    <li><a href="about.html">L'Histoire</a></li><li><a href="contact.html">Rendez-vous</a></li>
+  </ul>
+  <div class="nav-actions">
+    <select class="lang-switcher" id="langSwitcher" aria-label="Language">
+      <option value="en">EN</option><option value="zh">中文</option><option value="es">ES</option>
+      <option value="fr">FR</option><option value="ru">RU</option><option value="ar">AR</option><option value="ja">JA</option><option value="ko">KO</option><option value="de">DE</option><option value="pt">PT</option><option value="hi">HI</option><option value="id">ID</option><option value="tr">TR</option><option value="it">IT</option>
+    </select>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</div></nav>
+<section class="page-header"><h1>Collections</h1><p>Chaque collection raconte une histoire.</p></section>
+<div class="works-asymmetric" id="collectionsGrid" style="max-width:1440px;margin:0 auto;padding:0 48px 120px"></div>
+<footer class="footer">
+  <div class="footer-bottom">
+    <p>&copy; 2026 ALTESSE. Tous droits reserves.</p>
+    <p class="footer-disclaimer">All images on this site are AI-generated for conceptual reference only. No copyright infringement intended. · 本站所有图片均由AI生成，仅作概念参考，无意侵犯任何版权。</p>
+  </div>
+</footer>
+<script src="js/main.js"></script>
+<script>
+(() => {
+  const $ = s => document.querySelector(s);
+  const lang = () => localStorage.getItem('altesse_lang') || 'en';
+  async function load() {
+    try {
+      const [cols, works] = await Promise.all([fetch('/api/collections').then(r=>r.json()), fetch('/api/works').then(r=>r.json())]);
+      const l = lang();
+      $('#collectionsGrid').innerHTML = cols.filter(c=>c.active!==false).map(c => {
+        const name = l==='zh' && c.nameZh ? c.nameZh : c.name;
+        const desc = l==='zh' && c.descriptionZh ? c.descriptionZh : c.description;
+        const colWorks = works.filter(w=>w.collection===c.id).slice(0,3);
+        return `<a href="atelier.html?id=${c.id}" class="work-item" style="aspect-ratio:3/4">
+          <img src="${c.coverImage}" alt="${name}" loading="lazy">
+          <div class="work-item-info"><h3>${name}</h3><p>${colWorks.length} pieces</p></div></a>`;
+      }).join('') || '<p style="text-align:center;padding:80px;color:var(--text-dim)">No collections found.</p>';
+    } catch(e) { $('#collectionsGrid').innerHTML = '<p style="text-align:center;padding:80px;color:var(--text-dim)">Unable to load.</p>'; }
+  }
+  document.addEventListener('DOMContentLoaded', load);
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+[
+  {
+    "id": "c001",
+    "name": "Celestial Dreams",
+    "nameZh": "星辰之梦",
+    "description": "Spring/Summer 2026 — Where the cosmos meets couture. Ethereal silhouettes in midnight hues, constellations captured in crystal, and fabrics that float like starlight.",
+    "descriptionZh": "2026春夏——当宇宙邂逅高定。午夜色调的空灵轮廓，水晶捕捉的星座，如星光般漂浮的面料。",
+    "coverImage": "images/collections/celestial-cover.jpg",
+    "active": true,
+    "order": 1,
+    "createdAt": "2026-06-01T00:00:00Z"
+  },
+  {
+    "id": "c002",
+    "name": "Ombre & Lumière",
+    "nameZh": "光影之间",
+    "description": "Autumn/Winter 2026 — A study in contrast. Liquid metals meet forest textures. Sculptural forms emerge from shadow, illuminated by moonstone and gold.",
+    "descriptionZh": "2026秋冬——对比的研究。液态金属遇见森林肌理。雕塑般的形式从阴影中浮现，被月光石和黄金照亮。",
+    "coverImage": "images/collections/ombre-cover.jpg",
+    "active": true,
+    "order": 2,
+    "createdAt": "2026-07-01T00:00:00Z"
+  },
+  {
+    "id": "c003",
+    "name": "Brides de Légende",
+    "nameZh": "传奇新娘",
+    "description": "Bridal Couture — For the woman who walks down the aisle as if she's entering legend. Architectural bows, eternal roses, and the purest white reimagined.",
+    "descriptionZh": "新娘高定——为走向红毯如同走入传奇的女性。建筑感蝴蝶结、永恒玫瑰，以及对最纯净的白的重新想象。",
+    "coverImage": "images/collections/bridal-cover.jpg",
+    "active": true,
+    "order": 3,
+    "createdAt": "2026-08-01T00:00:00Z"
+  }
+]
