@@ -1,11 +1,9 @@
 {
   "version": 2,
-  "builds": [
-    { "src": "server.js", "use": "@vercel/node" }
-  ],
-  "routes": [
-    { "src": "/api/(.*)", "dest": "/server.js" },
-    { "src": "/(.*\\.(html|css|js|jpg|jpeg|png|gif|svg|ico|woff|woff2|ttf|json|xml|txt))$", "dest": "/$1" },
-    { "src": "/(.*)", "dest": "/server.js" }
+  "functions": {
+    "api/**/*.js": { "memory": 512, "maxDuration": 10 }
+  },
+  "rewrites": [
+    { "source": "/api/admin/(.*)", "destination": "/api/admin" }
   ]
 }
