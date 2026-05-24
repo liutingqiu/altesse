@@ -1,6 +1,6 @@
-const { readData, send } = require('../_utils');
-module.exports = (req, res) => {
-  const auth = req.headers.authorization || '';
-  if (!auth.startsWith('Bearer ')) return send(res, 401, { error: 'Unauthorized' });
-  send(res, 200, readData('settings'));
-};
+const { send, ensureJSON, checkAuth } = require('../../_utils');
+const settings = require('../../../data/settings.json');
+module.exports = ensureJSON((req, res) => {
+  if (!checkAuth(req, res)) return;
+  send(res, 200, settings);
+});

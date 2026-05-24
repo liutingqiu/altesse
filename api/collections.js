@@ -1,2 +1,3 @@
-const { readData, send } = require('./_utils');
-module.exports = (req, res) => { send(res, 200, readData('collections')); };
+const { send, ensureJSON } = require('../_utils');
+const cols = require('../../data/collections.json');
+module.exports = ensureJSON((req, res) => send(res, 200, cols));

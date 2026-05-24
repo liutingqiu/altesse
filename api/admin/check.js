@@ -1,7 +1,5 @@
-const { send } = require('../_utils');
-
-module.exports = (req, res) => {
-  const auth = req.headers.authorization || '';
-  if (!auth.startsWith('Bearer ')) return send(res, 401, { error: 'Unauthorized' });
+const { send, ensureJSON, checkAuth } = require('../../_utils');
+module.exports = ensureJSON((req, res) => {
+  if (!checkAuth(req, res)) return;
   send(res, 200, { authenticated: true, role: 'admin' });
-};
+});
