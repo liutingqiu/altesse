@@ -1,5 +1,5 @@
-const { send, ensureJSON } = require('../_utils');
-const works = require('../../data/works.json');
+const { send, ensureJSON } = require('./_utils');
+const works = require('../data/works.json');
 
 module.exports = ensureJSON((req, res) => {
   const url = new URL(req.url, 'http://localhost');

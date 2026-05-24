@@ -1,4 +1,4 @@
-const { send, ensureJSON, getBody } = require('../_utils');
+const { send, ensureJSON, getBody } = require('./_utils');
 
 module.exports = ensureJSON(async (req, res) => {
   if (req.method !== 'POST') return send(res, 405, { error: 'Method not allowed' });
