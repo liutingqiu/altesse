@@ -50,15 +50,16 @@ module.exports = async function handler(req, res) {
       return json(res, 200, {success:true, message:'Merci!'});
     }
 
-    // Admin APIs
-    if (!auth.startsWith('Bearer ')) return json(res, 401, {error:'Unauthorized'});
-
+    // Login — no auth required
     if (p === '/api/admin/login' && m === 'POST') {
       const {username, password} = await bodyParser(req);
       const u = USERS.find(x=>x.username===username);
       if (!u||!verifyPwd(password, u.password)) return json(res, 401, {error:'Invalid credentials'});
       return json(res, 200, {token:'altesse_vercel_token', role:u.role});
     }
+    // Auth-gated admin APIs below
+    if (!auth.startsWith('Bearer ')) return json(res, 401, {error:'Unauthorized'});
+
     if (p === '/api/admin/logout') return json(res, 200, {success:true});
     if (p === '/api/admin/check') return json(res, 200, {authenticated:true, role:'admin'});
     if (p === '/api/admin/works') return json(res, 200, WORKS);
