@@ -1,6 +1,6 @@
-const { send, ensureJSON, getBody } = require('../_utils');
+const { send, ensureJSON, getBody } = require('../../_utils');
 const crypto = require('crypto');
-const users = require('../../data/users.json');
+const users = require('../../../data/users.json');
 
 function verifyPassword(password, stored) {
   const [salt, hash] = stored.split(':');
